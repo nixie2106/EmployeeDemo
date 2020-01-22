@@ -14,8 +14,17 @@ public class EmployeeService {
 	
 	public void saveEmployee(Employee emp) {
 		
-		//empRepository.save(emp);
+		empRepository.save(emp);
+		System.out.println("Saved");
 		
 	}
+	
+      public void deleteEmployee(String id) {
+		empRepository.deleteById(id);
+		System.out.println("deleted");
+		
+	    }
+     
+
 
 }

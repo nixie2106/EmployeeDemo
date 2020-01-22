@@ -19,7 +19,16 @@ public class EmployeeController {
 	@GetMapping("/employee")
 	public Employee getEmployee() {
 		
-		Employee emp = new Employee("101", "JOHN", "MATHEWS");
+		Employee emp = new Employee("102", "JOHN", "MATHEWS");
+		empService.saveEmployee(emp);
+		return emp;
+		
+	}
+	
+	@GetMapping("/employee/{id}/{name}/{title}")
+	public Employee getEmployee(@PathVariable String id, @PathVariable String name, @PathVariable String title) {
+		
+		Employee emp = new Employee(id, name, title);
 		empService.saveEmployee(emp);
 		return emp;
 		
@@ -29,6 +38,15 @@ public class EmployeeController {
 	public String getEmployeeName(@PathVariable String name) {
 		
 		return "Hello " + name;
+		
+	}
+	
+	@GetMapping("/employee/delete/{id}")
+	public String deleteEmployeeId(@PathVariable String id) {
+		
+		empService.deleteEmployee(id);
+		return id;
+		
 		
 	}
 	
